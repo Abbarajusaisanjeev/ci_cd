@@ -1,0 +1,36 @@
+--- 
+version: 2
+anchors:  
+jobs:
+  Installing prerequiste:
+    machine:
+      image: ubuntu-2004:current
+    steps: 
+      - run: 
+          name: Installing prerequiste
+          command: |
+            sudo apt-get update
+            sudo apt install python3-pip
+            sudo apt install git
+            pip3 install ansible
+            git clone https://github.com/Abbarajusaisanjeev/ci_cd.git
+            cd ci_cd
+            ansible-playbook test.yml
+  # Execution:
+  #   machine:
+  #     image: ubuntu-2004:current
+  #   steps: 
+  #     - run: 
+  #         name: Installing prerequiste
+  #         command: |
+            
+  
+            
+workflows:
+  version: 2
+  build:
+    jobs:
+      - Installing prerequiste
+      # - Execution:
+      #     requires:
+      #       - Installing prerequiste

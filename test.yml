@@ -1,0 +1,14 @@
+---
+- name: sample playbook
+  hosts: localhost
+  gather_facts: false
+  vars: 
+    host1: sanjeev
+    host2: sai
+  tasks: 
+  - name: printing host 1 value
+    debug:
+      msg: "my hostname is {{host1}}"
+  - name: printing host 2 value
+    debug:
+      var: host2
